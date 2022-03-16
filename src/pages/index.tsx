@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
-import HomePage from "./Home";
+import style from "styles/home.module.scss";
 
 const Home: NextPage = () => {
 	return (
-		<HomePage/>
+		<main id={"main"} style={style}>
+            Hello World from NextJs!
+        </main>
 	);
 };
 
