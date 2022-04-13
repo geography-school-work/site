@@ -23,7 +23,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "*.ico"
+    "*.ico",
+    "**/*.svg"
   ],
   "exclude": [
     "node_modules"
