@@ -4,7 +4,7 @@ import { HomeStyles } from "../styles/home";
 
 const Home: NextPage = () => {
 	return (
-		<div id="home">
+		<>
 			<HeaderComponent />
 			<HomeStyles>
 				<h2>
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 					casa ou apartamento.
 				</p>
 			</HomeStyles>
-		</div>
+		</>
 	);
 };
 

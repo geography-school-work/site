@@ -13,6 +13,7 @@ export const Header = styled.header`
     > h1 {
         margin-left: 4rem;
         font-weight: bolder;
+        font-size: 2rem;
     }
 
     > nav {
@@ -69,5 +70,17 @@ export const Header = styled.header`
                 display: flex;
             }
         }
+    }
+`;
+
+export const ModalContentStyle = styled.ul`
+    margin-top: 1rem;
+    list-style: none;
+    width: 75%;
+    font-family: "Poppins";
+
+    > li {
+        padding-top: .5rem;
+        padding-bottom: .5rem;
     }
 `;

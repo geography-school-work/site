@@ -12,7 +12,10 @@ export const HomeStyles = styled.main`
         margin-top: 7vh;
         margin-bottom: 0;
         width: 25vw;
+        font-size: 1.5rem;
+        font-weight: bold;
         min-width: 18rem;
+        margin-bottom: 1rem;
     }
 
     > p {
