@@ -15,6 +15,10 @@ const Document = () => {
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Poppins&family=Ubuntu&display=swap"
                     rel="stylesheet"
                 />
+                <meta name="theme-color" content="#697DFA"/>
+                <meta property="name" content="HortaSua" />
+                <meta property="description" content="Uma empresa sustentável" />
+                <meta name="twitter:card" content="summary" />
             </Head>
             <body>
                 <Main />
