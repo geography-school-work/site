@@ -14,6 +14,7 @@ import {
 	ModalOverlay,
 	propNames,
 	useDisclosure,
+	useToast,
 } from "@chakra-ui/react";
 import { Field, Form, Formik } from "formik";
 import { HeaderComponent } from "../web/components/header";
@@ -21,10 +22,11 @@ import { HomeStyles } from "../styles/home";
 
 const Home: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const toast = useToast();
 
 	const validateField = (value) => {
 		if (!value) {
-			return "This field is required";
+			return "Este campo é obrigatório";
 		}
 		return "";
 	};
@@ -50,6 +52,7 @@ const Home: NextPage = () => {
 					<button onClick={onOpen}>Responder ao formulário</button>
 				</div>
 			</HomeStyles>
+
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>
 				<ModalOverlay />
 				<ModalContent width="90%">
@@ -57,20 +60,34 @@ const Home: NextPage = () => {
 					<ModalCloseButton />
 					<ModalBody>
 						<Formik
-							initialValues={{}}
-							onSubmit={(values, action) => {
-								console.log(values);
+							initialValues={{
+								name: "",
+							}}
+							onSubmit={(values, actions) => {
+								toast({
+									position: "top-right",
+									title: "Formulário enviado",
+									description: "Seu formulário foi enviado com sucesso!",
+									status: "success",
+									duration: 2500,
+									isClosable: true,
+									containerStyle: {
+										fontFamily: "Poppins",
+									},
+								});
+								actions.setSubmitting(false);
 							}}
 						>
 							{(props) => (
 								<Form>
-									<Field mb={5} name="Alguma coisa">
+									<Field mb={5} name="name" validate={validateField}>
 										{({ field, form }) => (
 											<FormControl
 												isInvalid={form.errors.name && form.touched.name}
+												isRequired
 											>
-												<FormLabel htmlFor="Alguma coisa">Alguma coisa</FormLabel>
-												<Input {...field} placeholder="Alguma coisa" />
+												<FormLabel htmlFor="name">Nome</FormLabel>
+												<Input {...field} placeholder="Digite seu nome" />
 												<FormErrorMessage>{form.errors.name}</FormErrorMessage>
 											</FormControl>
 										)}
