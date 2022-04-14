@@ -1,6 +1,10 @@
 {
     "cSpell.words": [
         "techmmunity",
-        "nextjs"
-    ]
+        "nextjs",
+        "formik",
+        "chakra",
+        "preconnect"
+    ],
+    "cSpell.language": "pt-BR,en-US"
 }
