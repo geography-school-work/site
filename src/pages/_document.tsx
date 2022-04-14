@@ -16,8 +16,8 @@ const Document = () => {
                     rel="stylesheet"
                 />
                 <meta name="theme-color" content="#697DFA"/>
-                <meta property="name" content="HortaSua" />
-                <meta property="description" content="Uma empresa sustentável" />
+                <meta name="name" content="HortaSua" />
+                <meta name="description" content="Uma empresa sustentável" />
                 <meta name="twitter:card" content="summary" />
             </Head>
             <body>
