@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+export const Container = styled.header`
 	display: flex;
 	justify-content: space-between;
 	background-color: ${({ theme }) => theme.BLUE};
@@ -73,7 +73,7 @@ export const Header = styled.header`
 	}
 `;
 
-export const ModalContentStyle = styled.ul`
+export const CustomModal = styled.ul`
 	margin-top: 1rem;
 	list-style: none;
 	width: 75%;

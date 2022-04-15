@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 
-import { HomeStyles } from "../styles/home";
-import { HeaderComponent } from "../web/components/header";
+import { Main } from "../styles/home";
+import { Header } from "../web/components/header";
 
 const Home: NextPage = () => {
 	return (
 		<>
-			<HeaderComponent />
-			<HomeStyles>
+			<Header />
+			<Main>
 				<div id="presentation">
 					<h2>Uma empresa sustentável, feita para você!</h2>
 					<p>
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 					</p>
 					<button>Responder ao formulário</button>
 				</div>
-			</HomeStyles>
+			</Main>
 		</>
 	);
 };

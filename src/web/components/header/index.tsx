@@ -10,13 +10,13 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Header, ModalContentStyle } from "./styles";
+import { Container, CustomModal } from "./styles";
 
-export const HeaderComponent: NextPage = () => {
+export const Header: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
-		<Header>
+		<Container>
 			<h1>Logo</h1>
 			<nav>
 				<ul>
@@ -42,7 +42,7 @@ export const HeaderComponent: NextPage = () => {
 				<ModalContent width="75%">
 					<ModalCloseButton />
 					<ModalBody>
-						<ModalContentStyle>
+						<CustomModal>
 							<li>
 								<Link href="/products">Produtos</Link>
 							</li>
@@ -50,10 +50,10 @@ export const HeaderComponent: NextPage = () => {
 							<li>
 								<Link href="/about-us">Sobre nós</Link>
 							</li>
-						</ModalContentStyle>
+						</CustomModal>
 					</ModalBody>
 				</ModalContent>
 			</Modal>
-		</Header>
+		</Container>
 	);
 };
