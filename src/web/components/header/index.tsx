@@ -1,6 +1,3 @@
-import type { NextPage } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import {
 	Modal,
 	ModalBody,
@@ -9,6 +6,10 @@ import {
 	ModalOverlay,
 	useDisclosure,
 } from "@chakra-ui/react";
+import type { NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
+
 import { Header, ModalContentStyle } from "./styles";
 
 export const HeaderComponent: NextPage = () => {
