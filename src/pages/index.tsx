@@ -13,8 +13,10 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
+import { isBasicName } from "config/validations/name";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
+import { yup } from "utils/yup";
 
 import { HomeStyles } from "../styles/home";
 import { HeaderComponent } from "../web/components/header";
@@ -23,13 +25,9 @@ const Home: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const toast = useToast();
 
-	const validateField = (value: string) => {
-		if (!value) {
-			return "Este campo é obrigatório";
-		}
-
-		return "";
-	};
+	const validationSchema = yup.object().shape({
+		name: isBasicName,
+	});
 
 	return (
 		<>
@@ -77,16 +75,16 @@ const Home: NextPage = () => {
 								});
 								actions.setSubmitting(false);
 							}}
+							validationSchema={validationSchema}
 						>
-							{props => (
+							{({ isSubmitting }) => (
 								<Form>
-									<Field mb={5} name="name" validate={validateField}>
+									<Field mb={5} name="name">
 										{(
 											{ field, form }: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 										) => (
 											<FormControl
 												isInvalid={form.errors.name && form.touched.name}
-												isRequired
 											>
 												<FormLabel htmlFor="name">Nome</FormLabel>
 												<Input {...field} placeholder="Digite seu nome" />
@@ -98,7 +96,7 @@ const Home: NextPage = () => {
 										mt={4}
 										mb={4}
 										colorScheme="teal"
-										isLoading={props.isSubmitting}
+										isLoading={isSubmitting}
 										type="submit"
 									>
 										Enviar
