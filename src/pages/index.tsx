@@ -13,6 +13,7 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { isBasicName } from "config/validations/name";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
@@ -21,13 +22,32 @@ import { yup } from "utils/yup";
 import { HomeStyles } from "../styles/home";
 import { HeaderComponent } from "../web/components/header";
 
+import { HttpStatusEnum } from "enums/statuses";
+import type { Question } from "types/form";
+
 const Home: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const toast = useToast();
+	const toast = useToast({
+		position: "top-right",
+		duration: 2500,
+		isClosable: true,
+		containerStyle: {
+			fontFamily: "Poppins",
+		},
+	});
 
 	const validationSchema = yup.object().shape({
 		name: isBasicName,
 	});
+
+	const formatValues = (values: Record<string, string>): Array<Question> => {
+		return Object.entries(values).map(([title, answer]) => {
+			return {
+				title,
+				answer,
+			};
+		});
+	};
 
 	return (
 		<>
@@ -61,19 +81,31 @@ const Home: NextPage = () => {
 							initialValues={{
 								name: "",
 							}}
-							onSubmit={(values, actions) => {
-								toast({
-									position: "top-right",
-									title: "Formulário enviado",
-									description: "Seu formulário foi enviado com sucesso!",
-									status: "success",
-									duration: 2500,
-									isClosable: true,
-									containerStyle: {
-										fontFamily: "Poppins",
+							onSubmit={async (values, actions) => {
+								const formattedValues = formatValues(values);
+								const response = await axios.post(
+									`${process.env.NEXT_PUBLIC_API_URL}/forms`,
+									{
+										questions: formattedValues,
 									},
-								});
+								);
+
+								if (response.status === HttpStatusEnum.CREATED) {
+									toast({
+										title: "Formulário enviado",
+										description: "Seu formulário foi enviado com sucesso!",
+										status: "success",
+									});
+								} else {
+									toast({
+										title: "Ocorreu um erro",
+										description: "Seu formulário não pode ser enviado",
+										status: "error",
+									});
+								}
+
 								actions.setSubmitting(false);
+								actions.resetForm();
 							}}
 							validationSchema={validationSchema}
 						>
