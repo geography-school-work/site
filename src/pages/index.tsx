@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import {
 	Button,
 	FormControl,
@@ -15,17 +14,20 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 import { Field, Form, Formik } from "formik";
-import { HeaderComponent } from "../web/components/header";
+import type { NextPage } from "next";
+
 import { HomeStyles } from "../styles/home";
+import { HeaderComponent } from "../web/components/header";
 
 const Home: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const toast = useToast();
 
-	const validateField = (value) => {
+	const validateField = (value: string) => {
 		if (!value) {
 			return "Este campo é obrigatório";
 		}
+
 		return "";
 	};
 
@@ -76,10 +78,10 @@ const Home: NextPage = () => {
 								actions.setSubmitting(false);
 							}}
 						>
-							{(props) => (
+							{props => (
 								<Form>
 									<Field mb={5} name="name" validate={validateField}>
-										{({ field, form }) => (
+										{({ field, form }: any) => (
 											<FormControl
 												isInvalid={form.errors.name && form.touched.name}
 												isRequired
