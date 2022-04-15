@@ -81,7 +81,9 @@ const Home: NextPage = () => {
 							{props => (
 								<Form>
 									<Field mb={5} name="name" validate={validateField}>
-										{({ field, form }: any) => (
+										{(
+											{ field, form }: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+										) => (
 											<FormControl
 												isInvalid={form.errors.name && form.touched.name}
 												isRequired
