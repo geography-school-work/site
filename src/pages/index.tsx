@@ -102,7 +102,7 @@ const Home: NextPage = () => {
 								if (status !== HttpStatusEnum.CREATED) {
 									toast({
 										title: "Ocorreu um erro",
-										description: "Seu formulário não pode ser enviado",
+										description: "Seu formulário não pode ser enviado.",
 										status: "error",
 									});
 
