@@ -1,16 +1,26 @@
 import {
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalOverlay,
+	Drawer,
+	DrawerBody,
+	DrawerContent,
+	DrawerHeader,
+	DrawerOverlay,
 	useDisclosure,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button, Container, CustomModal, Li, Nav, Title, Ul } from "./styles";
+import {
+	Button,
+	Container,
+	Text,
+	Li,
+	Nav,
+	Title,
+	Ul,
+	DrawerLink,
+	Divider,
+} from "./styles";
 
 export const Header: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,23 +47,23 @@ export const Header: NextPage = () => {
 				</Button>
 			</Nav>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered>
-				<ModalOverlay />
-				<ModalContent width="75%">
-					<ModalCloseButton />
-					<ModalBody>
-						<CustomModal>
-							<li>
-								<Link href="/products">Produtos</Link>
-							</li>
-							<hr />
-							<li>
-								<Link href="/about-us">Sobre nós</Link>
-							</li>
-						</CustomModal>
-					</ModalBody>
-				</ModalContent>
-			</Modal>
+			<Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+				<DrawerOverlay />
+				<DrawerContent>
+					<DrawerHeader borderBottomWidth={"1px"}>
+						<Text>Links</Text>
+					</DrawerHeader>
+					<DrawerBody>
+						<Link href="/products" passHref>
+							<DrawerLink>Produtos</DrawerLink>
+						</Link>
+						<Divider />
+						<Link href="/about-us" passHref>
+							<DrawerLink>Sobre nós</DrawerLink>
+						</Link>
+					</DrawerBody>
+				</DrawerContent>
+			</Drawer>
 		</Container>
 	);
 };

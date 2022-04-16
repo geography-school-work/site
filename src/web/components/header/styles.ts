@@ -67,14 +67,14 @@ export const Button = styled.button`
 	}
 `;
 
-export const CustomModal = styled.ul`
-	margin-top: 1rem;
-	list-style: none;
-	width: 75%;
-	font-family: "Poppins";
+export const Text = styled.p`
+	font-family: "Ubuntu";
+`;
 
-	> li {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-	}
+export const Divider = styled.hr`
+	margin: 0.25rem 0;
+`;
+
+export const DrawerLink = styled.a`
+	font-family: "Poppins";
 `;
