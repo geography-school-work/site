@@ -34,7 +34,7 @@ export const DataSection = styled.div`
 	}
 `;
 
-export const Link = styled.a`
+export const CustomLink = styled.a`
 	margin: 1rem 0;
 	background-color: ${({ theme }) => theme.GREEN};
 	border: none;

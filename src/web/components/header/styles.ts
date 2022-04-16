@@ -72,7 +72,7 @@ export const Text = styled.p`
 `;
 
 export const Divider = styled.hr`
-	margin: 0.25rem 0;
+	margin: 0.25rem 0w;
 `;
 
 export const DrawerLink = styled.a`

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { Link, DataSection, Main } from "../styles/home";
+import { DataSection, Main, CustomLink } from "../styles/home";
 import { Header } from "../web/components/header";
 
 const Home: NextPage = () => {
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 						Responda ao formulário abaixo para nos dizer um pouco mais sobre a
 						sua experiência com a nossa empresa!
 					</p>
-					<Link href="#">Responder ao formulário</Link>
+					<CustomLink href="#">Responder ao formulário</CustomLink>
 				</DataSection>
 			</Main>
 		</>
