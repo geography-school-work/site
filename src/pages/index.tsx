@@ -92,6 +92,7 @@ const Home: NextPage = () => {
 								name: "",
 							}}
 							onSubmit={async (values, actions) => {
+								console.log(process.env.NEXT_PUBLIC_API_URL);
 								const { status } = await axios.post(
 									`${process.env.NEXT_PUBLIC_API_URL}/forms`,
 									{
