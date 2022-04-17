@@ -26,8 +26,9 @@ import { HttpStatusEnum } from "enums/statuses";
 
 const Home: NextPage = () => {
 	const { isOpen, onClose: closeForm, onOpen: openForm } = useDisclosure();
+
 	const toast = useToast({
-		duration: 2500,
+		duration: 5000,
 		containerStyle: {
 			fontFamily: "Poppins",
 		},
@@ -116,6 +117,7 @@ const Home: NextPage = () => {
 
 								actions.setSubmitting(false);
 								actions.resetForm();
+								closeForm();
 							}}
 							validationSchema={validationSchema}
 						>
