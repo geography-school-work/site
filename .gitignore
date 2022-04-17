@@ -39,3 +39,6 @@ yarn-error.log*
 
 # secret
 .env
+
+# package manager
+pnpm-*.*

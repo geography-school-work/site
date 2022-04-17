@@ -1,3 +1,3 @@
-# Develope documentation
-- Package manager: [yarn](https://yarnpkg.com/)
+# Developer documentation
+- Package manager: [pnpm](https://pnpm.io/)
 - Framework: [NextJs](https://nextjs.org/)

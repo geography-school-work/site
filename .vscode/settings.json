@@ -4,7 +4,8 @@
         "nextjs",
         "formik",
         "chakra",
-        "preconnect"
+        "preconnect",
+        "pnpm"
     ],
     "cSpell.language": "pt,en"
 }
