@@ -37,7 +37,7 @@ export const Home: NextPage = () => {
 	});
 
 	const validationSchema = yup.object().shape({
-		name: isBasicName,
+		nome: isBasicName,
 	});
 
 	const formatValues = (values: Record<string, string>) => {
@@ -113,8 +113,6 @@ export const Home: NextPage = () => {
 										description: "Seu formulário não pode ser enviado.",
 										status: "error",
 									});
-
-									return;
 								}
 							}}
 							validationSchema={validationSchema}
@@ -124,11 +122,11 @@ export const Home: NextPage = () => {
 									<Field name="nome">
 										{({ field, form }: any) => (
 											<FormControl
-												isInvalid={form.errors.name && form.touched.name}
+												isInvalid={form.errors.nome && form.touched.nome}
 											>
 												<FormLabel htmlFor="nome">Nome</FormLabel>
 												<Input {...field} placeholder="Ex: João Pedro" />
-												<FormErrorMessage>{form.errors.name}</FormErrorMessage>
+												<FormErrorMessage>{form.errors.nome}</FormErrorMessage>
 											</FormControl>
 										)}
 									</Field>
