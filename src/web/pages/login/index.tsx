@@ -12,12 +12,14 @@ import { isPassword } from "config/validation/password";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { yup } from "utils/yup";
 import { Header } from "web/components/header";
 
 import { CustomButton, Main } from "./styles";
 
 export const Login: NextPage = () => {
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
 	const router = useRouter();
 	const toast = useToast({
 		duration: 5000,
@@ -29,6 +31,9 @@ export const Login: NextPage = () => {
 		status: "error",
 		title: "Ocorreu um erro",
 		description: "As credenciais estão incorretas",
+		onCloseComplete: () => {
+			setButtonDisabled(false);
+		},
 	});
 
 	const validationSchema = yup.object().shape({
@@ -46,6 +51,8 @@ export const Login: NextPage = () => {
 						password: "",
 					}}
 					onSubmit={async (values, actions) => {
+						setButtonDisabled(true);
+
 						try {
 							const { data } = await axios.post(
 								`${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
@@ -53,7 +60,6 @@ export const Login: NextPage = () => {
 							);
 
 							localStorage.setItem("user", JSON.stringify(data));
-							actions.setSubmitting(false);
 
 							router.push("/dashboard");
 						} catch {
@@ -61,6 +67,8 @@ export const Login: NextPage = () => {
 
 							return;
 						}
+
+						actions.setSubmitting(false);
 					}}
 					validationSchema={validationSchema}
 				>
@@ -104,6 +112,7 @@ export const Login: NextPage = () => {
 								colorScheme="teal"
 								isLoading={isSubmitting}
 								type="submit"
+								disabled={isButtonDisabled}
 								as={CustomButton}
 							>
 								Login
