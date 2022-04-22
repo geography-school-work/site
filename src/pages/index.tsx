@@ -17,7 +17,7 @@ import axios from "axios";
 import { isBasicName } from "config/validation/name";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
-import { convertKebabCaseToHumanReadable } from "utils/string";
+import { convertSnakeCaseToHumanReadable } from "utils/string";
 import { yup } from "utils/yup";
 
 import { DataSection, Main, CustomButton } from "../styles/home";
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
 	const formatValues = (values: Record<string, string>) => {
 		return Object.entries(values).map(([title, answer]) => {
 			return {
-				title: convertKebabCaseToHumanReadable(title),
+				title: convertSnakeCaseToHumanReadable(title),
 				answer,
 			};
 		});
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
 					<ModalBody>
 						<Formik
 							initialValues={{
-								name: "",
+								nome: "",
 							}}
 							onSubmit={async (values, actions) => {
 								const { status } = await axios.post(
@@ -129,8 +129,8 @@ const Home: NextPage = () => {
 											<FormControl
 												isInvalid={form.errors.name && form.touched.name}
 											>
-												<FormLabel htmlFor="name">Nome</FormLabel>
-												<Input {...field} placeholder="Nome" />
+												<FormLabel htmlFor="nome">Nome</FormLabel>
+												<Input {...field} placeholder="Ex: João Pedro" />
 												<FormErrorMessage>{form.errors.name}</FormErrorMessage>
 											</FormControl>
 										)}
