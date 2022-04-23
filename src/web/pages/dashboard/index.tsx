@@ -1,6 +1,8 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import axios from "axios";
 import type { NextPage } from "next";
-import type { DashboardProps } from "pages/dashboard";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Header } from "web/components/header";
 
 import {
@@ -12,9 +14,25 @@ import {
 	FormSection,
 } from "./styles";
 
-export const Dashboard: NextPage<DashboardProps> = ({
-	forms,
-}: DashboardProps) => {
+import type { Form } from "types/form";
+
+export const Dashboard: NextPage = () => {
+	const router = useRouter();
+	const [forms, setForms] = useState<Array<Form>>([]);
+
+	useEffect(() => {
+		const userData = localStorage.getItem("user");
+		if (!userData) {
+			router.push("/login");
+
+			return;
+		}
+
+		axios.get(`${process.env.NEXT_PUBLIC_API_URL}/forms`).then(({ data }) => {
+			setForms(data);
+		});
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
 	return (
 		<>
 			<Header />
