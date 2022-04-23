@@ -12,7 +12,7 @@ import { isPassword } from "config/validation/password";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { yup } from "utils/yup";
 import { Header } from "web/components/header";
 
@@ -35,6 +35,13 @@ export const Login: NextPage = () => {
 			setButtonDisabled(false);
 		},
 	});
+
+	useEffect(() => {
+		const userData = localStorage.getItem("user");
+		if (userData) {
+			router.push("/dashboard");
+		}
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const validationSchema = yup.object().shape({
 		username: isAdminName,
