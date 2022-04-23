@@ -7,7 +7,7 @@ export const isBasicName = yup
         .required("Este campo é obrigatório")
         .min(3, "Mínimo de 3 caracteres")
         .max(50, "Máximo de 50 caracteres")
-        .matches(/^[a-zA-Z]+$/, "Não pode conter números/símbolos")
+        .matches(/[a-zA-ZÁ-Ź\s]+/, "Não pode conter números/símbolos")
 
 export const isAdminName = yup.
         string()
