@@ -12,17 +12,25 @@ import {
 	ModalOverlay,
 	useDisclosure,
 	useToast,
+	Link as ChakraLink,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { isBasicName } from "config/validation/name";
 import { Field, Form, Formik } from "formik";
 import type { NextPage } from "next";
+import Link from "next/link";
 import { convertSnakeCaseToHumanReadable } from "utils/string";
 import { yup } from "utils/yup";
 
 import { Header } from "../../components/header";
 
-import { DataSection, Main, CustomButton } from "./styles";
+import {
+	DataSection,
+	Main,
+	CustomButton,
+	ButtonSection,
+	ButtonLabel,
+} from "./styles";
 
 export const Home: NextPage = () => {
 	const { isOpen, onClose: closeForm, onOpen: openForm } = useDisclosure();
@@ -53,7 +61,7 @@ export const Home: NextPage = () => {
 		<>
 			<Header />
 			<Main>
-				<DataSection id="presentation">
+				<DataSection>
 					<h2>Uma empresa sustentável, feita para você!</h2>
 					<p>
 						A HortaSua tem como proposta pomover uma maior sustentabilidade,
@@ -61,15 +69,24 @@ export const Home: NextPage = () => {
 						casa ou apartamento.
 					</p>
 				</DataSection>
-				<DataSection id="form-invite">
+				<DataSection>
 					<h2>Gostou do que leu? Então nos dê sua opinião!</h2>
 					<p>
 						Responda ao formulário abaixo para nos dizer um pouco mais sobre a
 						sua experiência com a nossa empresa!
 					</p>
-					<CustomButton onClick={openForm}>
-						Responder ao formulário
-					</CustomButton>
+					<ButtonSection>
+						<CustomButton onClick={openForm}>
+							Responder ao formulário
+						</CustomButton>
+						<ButtonLabel>
+							É um administrador?{" "}
+							<Link href="/login" passHref>
+								<ChakraLink color="teal.500">Faça o login</ChakraLink>
+							</Link>
+							!
+						</ButtonLabel>
+					</ButtonSection>
 				</DataSection>
 			</Main>
 

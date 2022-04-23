@@ -34,8 +34,15 @@ export const DataSection = styled.div`
 	}
 `;
 
+export const ButtonSection = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 1rem;
+`;
+
 export const CustomButton = styled.button`
-	margin: 1rem 0;
 	background-color: ${({ theme }) => theme.GREEN};
 	border: none;
 	border-radius: 1rem;
@@ -44,4 +51,11 @@ export const CustomButton = styled.button`
 	text-decoration: none;
 	padding: 1.25rem;
 	color: ${({ theme }) => theme.WHITE};
+	margin-bottom: 5px;
+`;
+
+export const ButtonLabel = styled.p`
+	font-size: 1rem;
+	width: 11rem;
+	color: ${({ theme }) => theme.GHOSTED};
 `;
